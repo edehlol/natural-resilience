@@ -1,5 +1,4 @@
-import { createSelector, createSlice, current } from '@reduxjs/toolkit';
-import { useSelector } from 'react-redux';
+import { createSlice } from '@reduxjs/toolkit';
 
 const real = [
   {
@@ -598,30 +597,21 @@ const questionsArray = [
   },
 ];
 
-const resultsDescription = [
-  {
-    score: 4000,
-    description:
-      'Likely adaptable to major change, likely an asset to any community, should likely be facilitating other people’s learning and sharing skills and resources',
-  },
-];
-
 const quizSlice = createSlice({
   name: 'quiz',
   initialState: {
     currentIndex: 0,
-    questions: real,
+    questions: questionsArray,
     completed: false,
     totalScore: 0,
+    maxTotalScore: 0,
     resultsDescription: '',
-    isActive: false,
   },
   reducers: {
     nextQuestion(state, action) {
       state.currentIndex++;
       if (state.currentIndex === state.questions.length) {
         state.completed = true;
-        state.isActive = false;
       }
     },
     previousQuestion(state, action) {
@@ -635,6 +625,9 @@ const quizSlice = createSlice({
     },
     setTotalScore(state, action) {
       state.totalScore = state.questions.reduce((total, current) => total + current.value, 0);
+    },
+    setTotalMaxScore(state, action) {
+      state.maxTotalScore = state.questions.reduce((total, current) => total + current.maxValue, 0);
     },
     setResultsDescription(state, action) {
       if (state.totalScore >= 4000) {
@@ -658,7 +651,6 @@ const quizSlice = createSlice({
       state.completed = false;
       state.totalScore = 0;
       state.resultsDescription = '';
-      state.isActive = true;
     },
   },
 });
@@ -723,6 +715,7 @@ export const {
   setTotalScore,
   setResultsDescription,
   resetQuiz,
+  setTotalMaxScore,
 } = quizSlice.actions;
 
 export default quizSlice.reducer;

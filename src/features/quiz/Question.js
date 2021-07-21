@@ -25,9 +25,6 @@ export const Question = () => {
               {question.subcategory}
             </Tag>
           )}
-          {/* <Tag w={64} colorScheme="green" variant="solid" py="2">
-          {question.category} {question.subcategory ? `- ${question.subcategory}` : ''}
-        </Tag> */}
         </Center>
       </Box>
 

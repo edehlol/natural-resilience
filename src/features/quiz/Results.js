@@ -1,11 +1,10 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  selectTotalScore,
   setTotalScore,
   selectResultsPerCategory,
-  setResults,
   setResultsDescription,
+  setTotalMaxScore,
 } from './quizSlice';
 import {
   Table,
@@ -14,34 +13,28 @@ import {
   Th,
   Tbody,
   Td,
-  Progress,
-  Stack,
-  VStack,
-  Box,
   Container,
   Heading,
   Text,
-  List,
-  ListItem,
   TableCaption,
 } from '@chakra-ui/react';
 import { nanoid } from '@reduxjs/toolkit';
 
 export const Results = () => {
   const dispatch = useDispatch();
-  // const questions = useSelector((state) => state.quiz.questions);
-  // const totalScore = useSelector((state) => state.quiz.totalScore);
+  const totalScore = useSelector((state) => state.quiz.totalScore);
+  const maxTotalScore = useSelector((state) => state.quiz.maxTotalScore);
   const resultsPerCategory = useSelector(selectResultsPerCategory);
   const resultsDescription = useSelector((state) => state.quiz.resultsDescription);
   console.log(resultsPerCategory);
   useEffect(() => {
     dispatch(setTotalScore());
+    dispatch(setTotalMaxScore());
     dispatch(setResultsDescription());
   }, [dispatch]);
 
   const calculateResult = (value, maxValue) => {
     const result = (value / maxValue) * 100;
-    console.log(result);
     switch (true) {
       case result >= 95:
         return 'A+';
@@ -72,17 +65,6 @@ export const Results = () => {
       default:
         return '';
     }
-    //   if (result >= 90) {
-    //     return 'A';
-    //   } else if (result >= 80) {
-    //     return 'B';
-    //   } else if (result >= 70) {
-    //     return 'C';
-    //   } else if (result >= 60) {
-    //     return 'D';
-    //   } else {
-    //     return 'F';
-    //   }
   };
 
   const renderResults = () => {
@@ -98,21 +80,28 @@ export const Results = () => {
       );
       return (
         <Table key={nanoid()} mb="16">
+          <TableCaption fontSize="xl" placement="top">
+            {result.category}
+          </TableCaption>
           <Thead>
-            <Tr>
-              <Th>{result.category}</Th>
-              <Th isNumeric>Score</Th>
-            </Tr>
+            {result.subcategories[0] !== null && (
+              <Tr>
+                <Th>Subcategory</Th>
+                <Th isNumeric>Score</Th>
+              </Tr>
+            )}
+          </Thead>
+          <Tbody>
             {renderedSubCategories}
             <Tr bg="gray.300">
               <Td>
-                <b>Total</b>
+                <b>Score</b>
               </Td>
               <Td isNumeric>
                 <b>{calculateResult(result.value, result.maxValue)}</b>
               </Td>
             </Tr>
-          </Thead>
+          </Tbody>
         </Table>
       );
     });
@@ -120,54 +109,20 @@ export const Results = () => {
   };
   return (
     <Container>
-      <Text align="center" mb="4">
-        Your result:
+      <Text align="center" mb="4" fontSize="lg">
+        Your results:
       </Text>
+      {renderResults()}
+
+      <Text align="center" fontSize="lg">
+        Total Score:{' '}
+      </Text>
+      <Heading mb="4" align="center" size="3xl">
+        {calculateResult(totalScore, maxTotalScore)}
+      </Heading>
       <Heading size="md" align="center" mb="8">
         {resultsDescription}
       </Heading>
-      <p></p>
-      {/* {renderedResults} */}
-
-      {/* <Table>
-        <TableCaption>Testing it out </TableCaption>
-        <Thead>
-          <Tr>
-            <Th>Personal and Psychological</Th>
-            <Th>Score</Th>
-          </Tr>
-        </Thead>
-        <Tbody>
-          <Tr>
-            <Td>Aptitude</Td>
-            <Td>A+</Td>
-          </Tr>
-          <Tr>
-            <Td>Attitude</Td>
-            <Td>B-</Td>
-          </Tr>
-          <Tr>
-            <Td>
-              <b>Total</b>
-            </Td>
-            <Td>
-              <b>B+</b>
-            </Td>
-          </Tr>
-        </Tbody>
-      </Table> */}
-
-      {renderResults()}
-
-      {/* <Table>
-        <Thead>
-          <Tr>
-            <Th>Category</Th>
-            <Th>Score</Th>
-          </Tr>
-        </Thead>
-        <Tbody>{renderResults}</Tbody>
-      </Table> */}
     </Container>
   );
 };

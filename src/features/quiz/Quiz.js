@@ -1,10 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Question } from './Question';
 import { Results } from './Results';
 import { previousQuestion } from './quizSlice';
 import { Container, Button, Divider, Center, Progress } from '@chakra-ui/react';
-import { navigate } from '@reach/router';
 
 export const Quiz = () => {
   const dispatch = useDispatch();
@@ -34,11 +33,12 @@ export const Quiz = () => {
 
         <Progress
           hasStripe
+          colorScheme="green"
           value={Math.floor((currentIndex / quizLength) * 100)}
           position="fixed"
           bottom="0"
           width="100%"
-          height="4"
+          height="6"
         />
       </>
     );

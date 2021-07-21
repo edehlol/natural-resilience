@@ -3,8 +3,6 @@ import {
   Button,
   Center,
   Container,
-  Flex,
-  Heading,
   Image,
   List,
   ListIcon,
