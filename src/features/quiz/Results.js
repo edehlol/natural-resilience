@@ -104,18 +104,37 @@ export const Results = () => {
   // ));
 
   const renderResults = () => {
-    return resultsPerCategory.map((result) => {
+    const results = resultsPerCategory.map((result) => {
+      const renderedSubCategories = result.subcategories.map(
+        (subcategory) =>
+          subcategory && (
+            <Tr key={nanoid()}>
+              <Td>{subcategory.name}</Td>
+              <Td isNumeric>{calculateResult(subcategory.value, subcategory.maxValue)}</Td>
+            </Tr>
+          )
+      );
       return (
-        <Table key={nanoid()}>
+        <Table key={nanoid()} mb="16">
           <Thead>
             <Tr>
               <Th>{result.category}</Th>
-              <Th>Score</Th>
+              <Th isNumeric>Score</Th>
+            </Tr>
+            {renderedSubCategories}
+            <Tr bg="gray.300">
+              <Td>
+                <b>Total</b>
+              </Td>
+              <Td isNumeric>
+                <b>{calculateResult(result.value, result.maxValue)}</b>
+              </Td>
             </Tr>
           </Thead>
         </Table>
       );
     });
+    return results;
   };
   return (
     <Container>
@@ -128,7 +147,7 @@ export const Results = () => {
       <p></p>
       {/* {renderedResults} */}
 
-      <Table>
+      {/* <Table>
         <TableCaption>Testing it out </TableCaption>
         <Thead>
           <Tr>
@@ -154,7 +173,7 @@ export const Results = () => {
             </Td>
           </Tr>
         </Tbody>
-      </Table>
+      </Table> */}
 
       {renderResults()}
 

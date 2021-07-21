@@ -665,6 +665,7 @@ const quizSlice = createSlice({
 
 export const selectCurrentQuestion = (state) => state.quiz.questions[state.quiz.currentIndex];
 
+// !! TODO: refactor function
 export const selectResultsPerCategory = (state) => {
   let results = [];
   // fill the array with categories
