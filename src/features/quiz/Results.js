@@ -21,6 +21,9 @@ import {
   Container,
   Heading,
   Text,
+  List,
+  ListItem,
+  TableCaption,
 } from '@chakra-ui/react';
 import { nanoid } from '@reduxjs/toolkit';
 
@@ -82,15 +85,15 @@ export const Results = () => {
     //   }
   };
 
-  const renderResults = resultsPerCategory.map((result) => (
-    <Tr key={nanoid()}>
-      <Td>{result.category}</Td>
-      <Td>
-        {calculateResult(result.value, result.maxValue)}
-        {/* {result.value} / {result.maxValue} */}
-      </Td>
-    </Tr>
-  ));
+  // const renderResults = resultsPerCategory.map((result) => (
+  //   <Tr key={nanoid()}>
+  //     <Td>{result.category}</Td>
+  //     <Td>
+  //       {calculateResult(result.value, result.maxValue)}
+  //       {/* {result.value} / {result.maxValue} */}
+  //     </Td>
+  //   </Tr>
+  // ));
   // const renderedResults = resultsPerCategory.map((result) => (
   //   <VStack key={nanoid()}>
   //     <Box>
@@ -99,6 +102,21 @@ export const Results = () => {
   //     <Box></Box>
   //   </VStack>
   // ));
+
+  const renderResults = () => {
+    return resultsPerCategory.map((result) => {
+      return (
+        <Table key={nanoid()}>
+          <Thead>
+            <Tr>
+              <Th>{result.category}</Th>
+              <Th>Score</Th>
+            </Tr>
+          </Thead>
+        </Table>
+      );
+    });
+  };
   return (
     <Container>
       <Text align="center" mb="4">
@@ -109,7 +127,38 @@ export const Results = () => {
       </Heading>
       <p></p>
       {/* {renderedResults} */}
+
       <Table>
+        <TableCaption>Testing it out </TableCaption>
+        <Thead>
+          <Tr>
+            <Th>Personal and Psychological</Th>
+            <Th>Score</Th>
+          </Tr>
+        </Thead>
+        <Tbody>
+          <Tr>
+            <Td>Aptitude</Td>
+            <Td>A+</Td>
+          </Tr>
+          <Tr>
+            <Td>Attitude</Td>
+            <Td>B-</Td>
+          </Tr>
+          <Tr>
+            <Td>
+              <b>Total</b>
+            </Td>
+            <Td>
+              <b>B+</b>
+            </Td>
+          </Tr>
+        </Tbody>
+      </Table>
+
+      {renderResults()}
+
+      {/* <Table>
         <Thead>
           <Tr>
             <Th>Category</Th>
@@ -117,7 +166,7 @@ export const Results = () => {
           </Tr>
         </Thead>
         <Tbody>{renderResults}</Tbody>
-      </Table>
+      </Table> */}
     </Container>
   );
 };

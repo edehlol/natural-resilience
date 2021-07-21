@@ -564,29 +564,34 @@ const questionsArray = [
   {
     category: 'Social-Economic',
     question: 'I am useful to neighbors—I make or do something they need',
+    subcategory: 'One',
     maxValue: 200,
     value: null,
   },
   {
     category: 'Social-Economic',
     question: 'I can generate a surplus',
+    subcategory: 'One',
     maxValue: 200,
     value: null,
   },
   {
     category: 'Social-Economic',
+    subcategory: 'Two',
     question: 'I am well liked',
     maxValue: 200,
     value: null,
   },
   {
     category: 'psych',
+    subcategory: '3',
     question: 'I am well liked',
     maxValue: 200,
     value: null,
   },
   {
     category: 'psych',
+    subcategory: '3',
     question: 'I am well liked',
     maxValue: 200,
     value: null,
@@ -605,7 +610,7 @@ const quizSlice = createSlice({
   name: 'quiz',
   initialState: {
     currentIndex: 0,
-    questions: questionsArray,
+    questions: real,
     completed: false,
     totalScore: 0,
     resultsDescription: '',
@@ -662,11 +667,24 @@ export const selectCurrentQuestion = (state) => state.quiz.questions[state.quiz.
 
 export const selectResultsPerCategory = (state) => {
   let results = [];
+  // fill the array with categories
   for (let question of state.quiz.questions) {
     if (!results.find((result) => result.category === question.category)) {
-      results.push({ category: question.category, value: null, maxValue: null });
+      results.push({ category: question.category, subcategories: [], value: null, maxValue: null });
     }
   }
+  // TODO: turn subcategory into object with name and score
+  // fill the categories with subcategories
+  for (let result of results) {
+    for (let question of state.quiz.questions) {
+      if (question.category === result.category) {
+        if (!result.subcategories.includes(question.subcategory)) {
+          result.subcategories.push(question.subcategory);
+        }
+      }
+    }
+  }
+  // Add score and maxscore for each category
   for (let result of results) {
     result.value = state.quiz.questions
       .filter((question) => question.category === result.category)
@@ -675,6 +693,25 @@ export const selectResultsPerCategory = (state) => {
       .filter((question) => question.category === result.category)
       .reduce((total, current) => total + current.maxValue, 0);
   }
+  // convert the subcategory array into an object with name and score
+  for (let result of results) {
+    result.subcategories = result.subcategories.map((subcategory) => {
+      if (subcategory) {
+        return {
+          name: subcategory,
+          value: state.quiz.questions
+            .filter((question) => question.subcategory === subcategory)
+            .reduce((total, current) => total + current.value, 0),
+          maxValue: state.quiz.questions
+            .filter((question) => question.subcategory === subcategory)
+            .reduce((total, current) => total + current.maxValue, 0),
+        };
+      } else {
+        return null;
+      }
+    });
+  }
+  console.log(results);
   return results;
 };
 
