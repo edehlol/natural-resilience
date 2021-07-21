@@ -1,5 +1,5 @@
 import React from 'react';
-import { Stack, Button, Center, Tag, Text, Box } from '@chakra-ui/react';
+import { Stack, Button, Center, Tag, Text, Box, Heading } from '@chakra-ui/react';
 import { useSelector, useDispatch } from 'react-redux';
 import { nextQuestion, setAnswer, selectCurrentQuestion } from './quizSlice';
 
@@ -16,15 +16,25 @@ export const Question = () => {
     return <></>;
   }
   return (
-    <Box my="8">
-      <Center>
-        <Tag w={64} colorScheme="green" variant="solid" py="2">
+    <Box my="8" align="center">
+      <Box h="16">
+        <Heading size="md">{question.category}</Heading>
+        <Center>
+          {question.subcategory && (
+            <Tag colorScheme="green" variant="solid" px="2">
+              {question.subcategory}
+            </Tag>
+          )}
+          {/* <Tag w={64} colorScheme="green" variant="solid" py="2">
           {question.category} {question.subcategory ? `- ${question.subcategory}` : ''}
-        </Tag>
-      </Center>
+        </Tag> */}
+        </Center>
+      </Box>
 
       <Center h={32} my="4">
-        <Text fontSize="lg">{question.question}</Text>
+        <Text fontSize="lg" align="left">
+          {question.question}
+        </Text>
       </Center>
 
       <Stack>

@@ -85,24 +85,6 @@ export const Results = () => {
     //   }
   };
 
-  // const renderResults = resultsPerCategory.map((result) => (
-  //   <Tr key={nanoid()}>
-  //     <Td>{result.category}</Td>
-  //     <Td>
-  //       {calculateResult(result.value, result.maxValue)}
-  //       {/* {result.value} / {result.maxValue} */}
-  //     </Td>
-  //   </Tr>
-  // ));
-  // const renderedResults = resultsPerCategory.map((result) => (
-  //   <VStack key={nanoid()}>
-  //     <Box>
-  //       {result.category} <Progress value={(result.value / result.maxValue) * 100} />
-  //     </Box>
-  //     <Box></Box>
-  //   </VStack>
-  // ));
-
   const renderResults = () => {
     const results = resultsPerCategory.map((result) => {
       const renderedSubCategories = result.subcategories.map(
