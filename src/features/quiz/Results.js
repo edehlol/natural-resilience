@@ -26,7 +26,6 @@ export const Results = () => {
   const maxTotalScore = useSelector((state) => state.quiz.maxTotalScore);
   const resultsPerCategory = useSelector(selectResultsPerCategory);
   const resultsDescription = useSelector((state) => state.quiz.resultsDescription);
-  console.log(resultsPerCategory);
   useEffect(() => {
     dispatch(setTotalScore());
     dispatch(setTotalMaxScore());

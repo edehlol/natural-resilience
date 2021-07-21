@@ -3,6 +3,7 @@ import {
   Button,
   Center,
   Container,
+  Heading,
   Image,
   List,
   ListIcon,
@@ -27,7 +28,11 @@ export const Home = () => {
   return (
     <>
       <Container maxW="container.lg">
-        <Center></Center>
+        <Center>
+          <Heading size="lg" align="center">
+            The Resilience Aptitude Assessment Test
+          </Heading>
+        </Center>
 
         <SimpleGrid columns={[1, 1, 2]} my="12" spacing="8">
           <Image src={waterfall} boxSize="md" objectFit="cover" alt="waterfall scenery" />
@@ -83,18 +88,23 @@ export const Home = () => {
       </Container>
 
       <Center bg="green.500">
-        <Button
-          my="12"
-          variant="outline"
-          borderColor="white"
-          color="white"
-          border="2px"
-          size="lg"
-          _hover={{ bg: 'green.600' }}
-          onClick={onBtnClick}
-        >
-          Start Quiz
-        </Button>
+        <Box align="center" py="12">
+          <Heading size="lg" color="white">
+            Take the Aptitude Test
+          </Heading>
+          <Button
+            mt="12"
+            variant="outline"
+            borderColor="white"
+            color="white"
+            border="2px"
+            size="lg"
+            _hover={{ bg: 'green.600' }}
+            onClick={onBtnClick}
+          >
+            Start Test
+          </Button>
+        </Box>
       </Center>
     </>
   );

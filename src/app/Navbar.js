@@ -5,7 +5,7 @@ import { navigate } from '@reach/router';
 
 export const Navbar = () => {
   return (
-    <Box bg="green.500" py="4" mb="4">
+    <Box bg="green.500" py="4" mb="8">
       <Container maxW="container.lg">
         <HStack justify="space-between">
           <HStack>
