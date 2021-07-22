@@ -1,9 +1,10 @@
 import React from 'react';
 import { GiTreeBranch } from 'react-icons/gi';
 import { Box, Container, HStack, Link, Icon, Heading } from '@chakra-ui/react';
-import { navigate } from '@reach/router';
+import { useHistory } from 'react-router-dom';
 
 export const Navbar = () => {
+  const history = useHistory();
   return (
     <Box bg="green.500" py="4" mb="8">
       <Container maxW="container.lg">
@@ -13,7 +14,7 @@ export const Navbar = () => {
               fontSize="lg"
               color="white"
               onClick={() => {
-                navigate('/');
+                history.push('/');
               }}
             >
               <HStack>

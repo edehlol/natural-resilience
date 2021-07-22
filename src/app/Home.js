@@ -11,19 +11,21 @@ import {
   SimpleGrid,
   Text,
 } from '@chakra-ui/react';
-import { navigate } from '@reach/router';
+// import { navigate } from '@reach/router';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { resetQuiz } from '../features/quiz/quizSlice';
 import house from '../assets/house.jpg';
 import waterfall from '../assets/waterfall.jpg';
 import { FaCheckCircle } from 'react-icons/fa';
+import { useHistory } from 'react-router-dom';
 
-export const Home = () => {
+const Home = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const onBtnClick = () => {
     dispatch(resetQuiz());
-    navigate('/quiz');
+    history.push('/quiz');
   };
   return (
     <>
@@ -109,3 +111,5 @@ export const Home = () => {
     </>
   );
 };
+
+export default Home;

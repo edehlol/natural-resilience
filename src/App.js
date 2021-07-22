@@ -1,18 +1,28 @@
-import React from 'react';
-import { Home } from './app/Home';
-import { Quiz } from './features/quiz/Quiz';
-import { Router } from '@reach/router';
+import React, { lazy, Suspense } from 'react';
+import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
 import { Navbar } from './app/Navbar';
+const Home = lazy(() => import('./app/Home'));
+const Quiz = lazy(() => import('./features/quiz/Quiz'));
+
+const Loader = () => <p>loading</p>;
 
 const App = () => {
   return (
-    <div className="App">
-      <Navbar />
-      <Router>
-        <Home path="/" />
-        <Quiz path="/quiz" />
-      </Router>
-    </div>
+    <>
+      <Suspense fallback={<Loader />}>
+        <Router>
+          <Navbar />
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route path="/quiz">
+              <Quiz />
+            </Route>
+          </Switch>
+        </Router>
+      </Suspense>
+    </>
   );
 };
 

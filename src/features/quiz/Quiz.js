@@ -5,7 +5,7 @@ import { Results } from './Results';
 import { previousQuestion } from './quizSlice';
 import { Container, Button, Divider, Center, Progress } from '@chakra-ui/react';
 
-export const Quiz = () => {
+const Quiz = () => {
   const dispatch = useDispatch();
   const completed = useSelector((state) => state.quiz.completed);
   const quizLength = useSelector((state) => state.quiz.questions.length);
@@ -44,3 +44,5 @@ export const Quiz = () => {
     );
   }
 };
+
+export default Quiz;
