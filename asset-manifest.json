@@ -1,21 +1,29 @@
 {
   "files": {
-    "main.js": "/edehlol/natural-resilience/static/js/main.4d2c6cfd.chunk.js",
-    "main.js.map": "/edehlol/natural-resilience/static/js/main.4d2c6cfd.chunk.js.map",
-    "runtime-main.js": "/edehlol/natural-resilience/static/js/runtime-main.23d5f0fc.js",
-    "runtime-main.js.map": "/edehlol/natural-resilience/static/js/runtime-main.23d5f0fc.js.map",
-    "static/js/2.80436c0c.chunk.js": "/edehlol/natural-resilience/static/js/2.80436c0c.chunk.js",
-    "static/js/2.80436c0c.chunk.js.map": "/edehlol/natural-resilience/static/js/2.80436c0c.chunk.js.map",
-    "static/js/3.74848367.chunk.js": "/edehlol/natural-resilience/static/js/3.74848367.chunk.js",
-    "static/js/3.74848367.chunk.js.map": "/edehlol/natural-resilience/static/js/3.74848367.chunk.js.map",
+    "main.js": "/edehlol/natural-resilience/static/js/main.fcea1f23.chunk.js",
+    "main.js.map": "/edehlol/natural-resilience/static/js/main.fcea1f23.chunk.js.map",
+    "runtime-main.js": "/edehlol/natural-resilience/static/js/runtime-main.444dfbdb.js",
+    "runtime-main.js.map": "/edehlol/natural-resilience/static/js/runtime-main.444dfbdb.js.map",
+    "static/js/2.55e3a667.chunk.js": "/edehlol/natural-resilience/static/js/2.55e3a667.chunk.js",
+    "static/js/2.55e3a667.chunk.js.map": "/edehlol/natural-resilience/static/js/2.55e3a667.chunk.js.map",
+    "static/js/3.4bf85c79.chunk.js": "/edehlol/natural-resilience/static/js/3.4bf85c79.chunk.js",
+    "static/js/3.4bf85c79.chunk.js.map": "/edehlol/natural-resilience/static/js/3.4bf85c79.chunk.js.map",
+    "static/js/4.282e3621.chunk.js": "/edehlol/natural-resilience/static/js/4.282e3621.chunk.js",
+    "static/js/4.282e3621.chunk.js.map": "/edehlol/natural-resilience/static/js/4.282e3621.chunk.js.map",
+    "static/js/5.c363de44.chunk.js": "/edehlol/natural-resilience/static/js/5.c363de44.chunk.js",
+    "static/js/5.c363de44.chunk.js.map": "/edehlol/natural-resilience/static/js/5.c363de44.chunk.js.map",
+    "static/js/6.7d1eeb2b.chunk.js": "/edehlol/natural-resilience/static/js/6.7d1eeb2b.chunk.js",
+    "static/js/6.7d1eeb2b.chunk.js.map": "/edehlol/natural-resilience/static/js/6.7d1eeb2b.chunk.js.map",
+    "static/js/7.565e2b9a.chunk.js": "/edehlol/natural-resilience/static/js/7.565e2b9a.chunk.js",
+    "static/js/7.565e2b9a.chunk.js.map": "/edehlol/natural-resilience/static/js/7.565e2b9a.chunk.js.map",
     "index.html": "/edehlol/natural-resilience/index.html",
-    "static/js/2.80436c0c.chunk.js.LICENSE.txt": "/edehlol/natural-resilience/static/js/2.80436c0c.chunk.js.LICENSE.txt",
+    "static/js/2.55e3a667.chunk.js.LICENSE.txt": "/edehlol/natural-resilience/static/js/2.55e3a667.chunk.js.LICENSE.txt",
     "static/media/house.e71f579d.jpg": "/edehlol/natural-resilience/static/media/house.e71f579d.jpg",
     "static/media/waterfall.8f74d9bf.jpg": "/edehlol/natural-resilience/static/media/waterfall.8f74d9bf.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.23d5f0fc.js",
-    "static/js/2.80436c0c.chunk.js",
-    "static/js/main.4d2c6cfd.chunk.js"
+    "static/js/runtime-main.444dfbdb.js",
+    "static/js/2.55e3a667.chunk.js",
+    "static/js/main.fcea1f23.chunk.js"
   ]
 }
